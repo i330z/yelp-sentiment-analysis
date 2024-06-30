@@ -30,7 +30,8 @@ model = AutoModelForSequenceClassification.from_pretrained('nlptown/bert-base-mu
 
 def sentiment_analysis(review):
         try:
-                token = tokenizer.encode(review, return_tensors='pt')
+                max_length = tokenizer.model_max_length
+                token = tokenizer.encode(review, max_length=max_length, truncation=True, return_tensors='pt')
                 result = model(token)
                 return int(torch.argmax(result.logits))+1
         except Exception as e:
