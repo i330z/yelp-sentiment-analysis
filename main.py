@@ -42,14 +42,17 @@ def sentiment_analysis(review):
 #Streamlit Code
 st.title("Yelp Comment Sentiment Analysis")
 
-def clear_input():
-        st.session_state["input_text"]
 
 if "input_text" not in st.session_state:
         st.session_state["input_text"] = ""
 
 
 url = st.text_input("Enter the URL:", key="input_text")
+
+def clear_input():
+        print('clear url')
+        st.session_state["input_text"] = ""
+
 
 if url:
     st.write(f"The entered URL is: {url}")
@@ -70,8 +73,6 @@ if url:
                 # print(list_data)
                 
         df = pd.DataFrame(list_data)
-
-        # print(df)
         
         st.write("User Sentiment Rating:", df )
         clear_input()
