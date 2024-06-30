@@ -60,12 +60,12 @@ if url:
     if not data.empty:
         print(data)
         review1 = data['reviews']
-        emoji = ['🤢','🥴','🙃','🙂','😍']
+        # emoji = ['🤢','🥴','🙃','🙂','😍']
         list_data= []
         for review in review1:
                 rev_senti = sentiment_analysis(review)
-                emoji_senti = emoji[rev_senti - 1]
-                list_data.append({ "review": review, "sentiment": emoji_senti })    
+                # emoji_senti = emoji[rev_senti - 1]
+                list_data.append({ "review": review, "sentiment": rev_senti })    
                 # print(list_data)
                 
         df = pd.DataFrame(list_data)
